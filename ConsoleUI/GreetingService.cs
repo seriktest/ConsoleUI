@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-public class GreetingService
+namespace ConsoleUI;
+
+public class GreetingService : IGreetingService
 {
     private readonly ILogger<GreetingService> _log;
     private readonly IConfiguration _config;
@@ -14,9 +16,9 @@ public class GreetingService
     
     public void Run()
     {
-        for (int i = 0; i < _config.GetValue<int>("LoopTimes"); i++)
+        for (var i = 0; i < _config.GetValue<int>("LoopTimes"); i++)
         {
-            _log.LogInformation("Run number {runNumber}", i);
+            _log.LogInformation("Run number {Number}", i);
         }
     }
 }
